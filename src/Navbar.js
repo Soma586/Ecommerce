@@ -24,6 +24,10 @@ function NavBar(props){
                     <ShoppingCart ></ShoppingCart>
                     </Badge>
                     </Link>
+
+                    <Link to = '/about'>
+                        About
+                    </Link>
                     {/* </Button> */}
                      
                     {/* </Link> */}

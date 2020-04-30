@@ -1,22 +1,39 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {increment, decrement} from './redux/installer'
+//import God from './godtower.jpg'
+import item from './items'
 
 
 
+// function handleClick( id){
+//     increment(id);
 
+// }
 
-function About(props){
-    return(
-        <div>
-            <h1> I watch Hunter x Hunter (about) </h1>
-            <button onClick = {props.increment}>app+</button>
-        <button onClick = {props.decrement}>app-</button>
-        </div>
+class About extends Component{
 
+    handleClick = (id) =>{
+        this.props.increment(id)
+    }
 
-       
-    )
+    render(){
+        //let items = item
+
+        return(
+            <div>
+                <h1> I watch Hunter x Hunter (about) </h1>
+                <img src = {item.img}/>
+                <button onClick = { () => this.handleClick(item)}>app+</button>
+            <button onClick = {decrement}>app-</button>
+            </div>
+    
+    
+           
+        )
+
+    }
+    
 }
 function maptoProps(globalstate){
     return{
@@ -29,4 +46,11 @@ const myActions = {
     decrement : decrement
 }
 
-export default connect(maptoProps, myActions)(About)
+const mapDispatchToProps= (dispatch)=>{
+    
+    return{
+        increment: (id)=>{dispatch(increment(id))}
+    }
+}
+
+export default connect(maptoProps, mapDispatchToProps)(About)

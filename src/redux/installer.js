@@ -2,9 +2,10 @@ import redux, {createStore} from 'redux'
 
 
 
-export function increment(){
+export function increment(id){
     return{
-        type : "INCREMENT"
+        type : "INCREMENT",
+        id
     }
 }
 
@@ -19,8 +20,8 @@ export function decrement(){
 let initstate = {
     Name : "Ventus",
     gender : "Male",
-    age : 20,
-    favoritethings : [],
+    age : 0,
+    items : [],
 
 }
 
@@ -31,7 +32,8 @@ function reducer(state = initstate,action){
             let newvalue = state.age + 1
             return{
                 ...state,
-                 age : state.age + 1
+                 age : state.age + 1,
+                 items : [...state.items, action.id]
             }
         case "DECREMENT" :
             return {
