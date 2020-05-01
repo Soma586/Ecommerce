@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {increment, decrement} from './redux/installer'
 //import God from './godtower.jpg'
-import item from './items'
+import items from './items'
+
 
 
 
@@ -18,14 +19,32 @@ class About extends Component{
     }
 
     render(){
-        //let items = item
+        let stuff = items.map ( item => {
+            return(
+                <div>
+                    <div>
+                    <img src = {item.img}/>
+                        <p>{item.price}</p>
+                        <button onClick = { () => this.handleClick(item)}>app+</button>
+                        <button onClick = {decrement}>app-</button>
+
+
+                    </div>
+                   
+
+                </div>
+                
+            )
+
+        }) 
 
         return(
             <div>
                 <h1> I watch Hunter x Hunter (about) </h1>
-                <img src = {item.img}/>
-                <button onClick = { () => this.handleClick(item)}>app+</button>
-            <button onClick = {decrement}>app-</button>
+                {/* <img src = {item.img}/> */}
+                {/* <button onClick = { () => this.handleClick(item)}>app+</button>
+            <button onClick = {decrement}>app-</button> */}
+            {stuff}
             </div>
     
     
