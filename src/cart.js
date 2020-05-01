@@ -10,6 +10,7 @@ function Cart(props){
         return(
             <div>
                 <p> the cart is currenly empty</p>
+                <button onClick = {buddha}> submit </button>
 
 
             </div>
@@ -53,8 +54,11 @@ function Cart(props){
 function buddha(){
     let email = "Tarik.Mulholland@gmail.com"
 
-    axios.post("http://localhost:4000" , {
-        email
+    axios.post("/Mail" , {
+        email :"Tarik.Mulholland@gmail.com",
+      name :'baba',
+      subjext : "aaa",
+      text : "IT works!"
 
 
     })
