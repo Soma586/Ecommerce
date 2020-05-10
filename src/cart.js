@@ -2,6 +2,8 @@ import React from 'react'
 import {connect } from 'react-redux'
 import items from './items'
 import axios from 'axios'
+import {ArrowDropUp, ArrowDropDown  } from '@material-ui/icons'
+import {addquantity} from './redux/installer'
 
 
 let champ = []
@@ -12,6 +14,7 @@ function Cart(props){
             <div>
                 <p> the cart is currenly empty</p>
                 <button onClick = {buddha}> submit </button>
+                
 
 
             </div>
@@ -25,6 +28,12 @@ function Cart(props){
             return(
                 <div>
                     <img src = {item.img}/>
+                    <p>{item.quantity}</p>
+                    <div className="add-remove">
+                                            <button ><ArrowDropUp/></button>
+                                            <button ><ArrowDropDown/></button>
+                                        </div>
+                    <button> delete</button>
 
 
 
@@ -93,5 +102,12 @@ function maptoprops(globalstate){
     }
 }
 
+const myActions = {
+    add : addquantity
 
-export default connect(maptoprops, {})(Cart)
+
+}
+
+
+
+export default connect(maptoprops, myActions)(Cart)

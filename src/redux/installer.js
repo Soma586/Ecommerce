@@ -18,6 +18,14 @@ export function decrement(){
 }
 
 
+export function addquantity(id){
+    return{
+        type : "ADDQUANTITY",
+        id
+    }
+
+}
+
 let initstate = {
     Name : "Ventus",
     gender : "Male",
@@ -103,6 +111,22 @@ function reducer(state = initstate,action){
             return {
                 ...state,
                 age : state.age -1
+            }
+
+        case "ADDQUANTITY" :
+           // int num = 0;
+            for(let i  = 0; i < state.items.length; i++){
+                if(action.id.id === state.items[i].id){
+                    state.items[i].quantity += 1
+                    break;
+                }
+            }
+            
+            return{
+                ...state,
+                totalquantity : state.totalquantity + 1
+
+
             }
         default :
             return {...state}
