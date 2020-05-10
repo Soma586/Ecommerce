@@ -26,6 +26,21 @@ export function addquantity(id){
 
 }
 
+export function subquantity(id){
+    return{
+        type : "SUBQUANTITY",
+        id
+    }
+
+}
+
+export function removeItem(id){
+    return {
+        type : "REMOVEITEM",
+        id
+    }
+}
+
 let initstate = {
     Name : "Ventus",
     gender : "Male",
@@ -128,6 +143,54 @@ function reducer(state = initstate,action){
 
 
             }
+            //need to work on this logic
+        case "SUBQUANTITY" :
+            for(let i  = 0; i < state.items.length; i++){
+                if(action.id.id === state.items[i].id){
+
+                    if(state.items[i].quantity === 1){
+                        let filter_items = []
+                        for(let i = 0; i < state.items.length; i++){
+                            if(state.items[i].id !== action.id.id){
+                                filter_items.push(state.items[i])
+                            }
+
+                        }
+
+                        return{
+                            ...state,
+                            items : filter_items,
+                            totalquantity : state.totalquantity - 1
+                        }
+
+                    }
+                    state.items[i].quantity -= 1
+                    break;
+                }
+            }
+            return{
+                ...state,
+                totalquantity : state.totalquantity - 1
+            }
+            case "REMOVEITEM" :
+                let filter_items = []
+                let subtractby = 0
+                        for(let i = 0; i < state.items.length; i++){
+                            if(state.items[i].id !== action.id.id){
+                                filter_items.push(state.items[i])
+                            }else{
+                                subtractby = state.items[i].quantity
+                            }
+
+                        }
+
+                return{
+                    ...state,
+                    items : filter_items,
+                    totalquantity : state.totalquantity - subtractby
+
+                }
+
         default :
             return {...state}
             

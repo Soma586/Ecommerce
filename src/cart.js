@@ -1,19 +1,41 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {connect } from 'react-redux'
 import items from './items'
 import axios from 'axios'
 import {ArrowDropUp, ArrowDropDown  } from '@material-ui/icons'
-import {addquantity} from './redux/installer'
+import {addquantity, subquantity, removeItem} from './redux/installer'
 
 
 let champ = []
-function Cart(props){
+class Cart extends Component{
 
-    if(props.value.items.length === 0){
+    handleClickadd = (id) =>{
+        this.props.addquantity(id)
+    }
+
+    handleClicksub = (id) =>{
+        this.props.subquantity(id)
+    }
+
+    handleClickremove = (id) =>{
+        this.props.removeItem(id)
+    }
+
+
+    
+
+    
+
+    render(){
+
+    
+
+    if(this.props.value.items.length === 0){
         return(
             <div>
                 <p> the cart is currenly empty</p>
                 <button onClick = {buddha}> submit </button>
+                <button onClick = {hello}>say hi</button>
                 
 
 
@@ -23,17 +45,17 @@ function Cart(props){
 
     }else{
 
-        champ = props.value.items
-        let stuff = props.value.items.map( item => {
+        champ = this.props.value.items
+        let stuff = this.props.value.items.map( item => {
             return(
                 <div>
                     <img src = {item.img}/>
                     <p>{item.quantity}</p>
                     <div className="add-remove">
-                                            <button ><ArrowDropUp/></button>
-                                            <button ><ArrowDropDown/></button>
+                                            <button onClick = {() => this.handleClickadd(item)} ><ArrowDropUp/></button>
+                                            <button onClick = {() => this.handleClicksub(item)} ><ArrowDropDown/></button>
                                         </div>
-                    <button> delete</button>
+                    <button onClick = {() => this.handleClickremove(item)}> delete</button>
 
 
 
@@ -60,6 +82,7 @@ function Cart(props){
 
     }
 }
+}
 
 function test(){
     return(
@@ -70,6 +93,10 @@ function test(){
         </div>
 
     )
+}
+
+function hello(){
+    console.log("hellow")
 }
 
 
@@ -102,12 +129,22 @@ function maptoprops(globalstate){
     }
 }
 
-const myActions = {
-    add : addquantity
+// const myActions = {
+//     add : addquantity
 
+
+// }
+
+
+const mapDispatchToProps = (dispatch)=>{
+    return{
+        addquantity : (id) =>{dispatch(addquantity(id))},
+        subquantity : (id) =>{dispatch(subquantity(id))},
+        removeItem : (id) =>{dispatch(removeItem(id))}
+        
+    }
 
 }
 
 
-
-export default connect(maptoprops, myActions)(Cart)
+export default connect(maptoprops, mapDispatchToProps)(Cart)
