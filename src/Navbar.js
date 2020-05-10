@@ -28,6 +28,10 @@ function NavBar(props){
                     <Link to = '/about'>
                         About
                     </Link>
+
+                    <Link to = '/mens'>
+                        Mens
+                    </Link>
                     {/* </Button> */}
                      
                     {/* </Link> */}

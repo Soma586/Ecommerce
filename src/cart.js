@@ -4,6 +4,7 @@ import items from './items'
 import axios from 'axios'
 
 
+let champ = []
 function Cart(props){
 
     if(props.value.items.length === 0){
@@ -19,6 +20,7 @@ function Cart(props){
 
     }else{
 
+        champ = props.value.items
         let stuff = props.value.items.map( item => {
             return(
                 <div>
@@ -50,15 +52,31 @@ function Cart(props){
     }
 }
 
+function test(){
+    return(
+        <div>
+            <h1>This is a test</h1>
+            <p>This was made in react</p>
 
-function buddha(){
+        </div>
+
+    )
+}
+
+
+function buddha(props){
     let email = "Tarik.Mulholland@gmail.com"
+    console.log(champ)
+    console.log(champ[0].price)
+    console.log(test)
 
     axios.post("/Mail" , {
-        email :"Tarik.Mulholland@gmail.com",
+        email :"Darkspeedkey@gmail.com",
       name :'baba',
       subjext : "aaa",
-      text : "IT works!"
+      text : champ[0].price,
+      img : champ[0].img,
+      items : champ
 
 
     })

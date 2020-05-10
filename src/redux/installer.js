@@ -30,6 +30,8 @@ function reducer(state = initstate,action){
     switch(action.type){
         case "INCREMENT" :
             let newvalue = state.age + 1
+
+            //let existed_item = state.items.find()
             return{
                 ...state,
                  age : state.age + 1,

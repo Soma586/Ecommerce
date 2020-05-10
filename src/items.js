@@ -10,8 +10,8 @@ import Tower from './Tower.png'
 // }
 
 const items = [
-    {id : 1, img : God, price : "$10"},
-    {id : 2, img : Tower, price : "S20"}
+    {id : 1, img : "https://i.imgur.com/dK3LlKc.jpg", price : "$10"},
+    {id : 2, img : "https://i.imgur.com/xJkvBYV.png", price : "S20"}
 ]
 
 export default items
