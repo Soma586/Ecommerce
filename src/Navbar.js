@@ -20,7 +20,7 @@ function NavBar(props){
                    
                    {/* <Button component = {Link} to = "/cart"> */}
                    <Link to ="/cart">
-                   <Badge badgeContent = {props.value.age} color = "secondary">
+                   <Badge badgeContent = {props.value.totalquantity} color = "secondary">
                     <ShoppingCart ></ShoppingCart>
                     </Badge>
                     </Link>
