@@ -91,7 +91,7 @@ const transport = {
       //xx.concat("<h1>Hello World!</h1><p>Have a nice day!</p>")
       
       console.log(data[i].img)
-      xx += `<h1>Hello World! <img src =${data[i].img} /> </h1>`
+      xx += `<h1>Hello World! <img src =${data[i].img} /> </h1> <p>quantity is ${data[i].quantity} </p> <hr>`
     }
 
     //let xx =

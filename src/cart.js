@@ -69,12 +69,24 @@ class Cart extends Component{
     
 
     return(
-        <div>
-             {/* <img src = {props.value.items[0].img} /> 
-            <p>helekfsl</p>
-                <p> {props.value.Name}</p> */}
-                {stuff}
+        <div className = "cart-parent">
+             <div className = "left-side">
+                 <h3> Shopping Bag</h3>
+                 {stuff}
+
+             </div>
+                {/* {stuff} */}
+                <div className = "right-side">
+                <p>Item Subtotal</p>
+                <p>Estimated shipping </p>
+
+                <p>please enter a valid email address before checking out</p>
+                <input id = "btn"/>
+                <button   onClick = {test}>input</button>
                 <button onClick = {buddha}> submit </button>
+                </div>
+
+                
            
            
         </div>
@@ -85,14 +97,17 @@ class Cart extends Component{
 }
 
 function test(){
-    return(
-        <div>
-            <h1>This is a test</h1>
-            <p>This was made in react</p>
+    // return(
+    //     <div>
+    //         <h1>This is a test</h1>
+    //         <p>This was made in react</p>
 
-        </div>
+    //     </div>
 
-    )
+    // )
+
+    const b = document.getElementById('btn').value
+    console.log(b)
 }
 
 function hello(){
@@ -101,18 +116,23 @@ function hello(){
 
 
 function buddha(props){
-    let email = "Tarik.Mulholland@gmail.com"
+   // let email = "Tarik.Mulholland@gmail.com"
+
+   let emailh = document.getElementById('btn').value.toString()
+
+  //emailh = emailh.toString()
     console.log(champ)
     console.log(champ[0].price)
     console.log(test)
 
     axios.post("/Mail" , {
-        email :"Darkspeedkey@gmail.com",
-      name :'baba',
-      subjext : "aaa",
-      text : champ[0].price,
-      img : champ[0].img,
-      items : champ
+        //email :"Darkspeedkey@gmail.com",
+        email : emailh,
+        name :'baba',
+        subjext : "aaa",
+        text : champ[0].price,
+        img : champ[0].img,
+        items : champ
 
 
     })

@@ -91,3 +91,22 @@
   color: azure;
   cursor: pointer;
 }
+
+/* cart css*/
+.cart-parent{
+  display: flex;
+  justify-content: center;
+}
+
+
+.left-side{
+  /* margin-left :24px; */
+  margin-right : 24px;
+  width: 642px;
+  background-color: aqua;
+}
+
+.right-side{
+  background-color: brown;
+  width: 309px;
+}
