@@ -77,10 +77,11 @@ class Cart extends Component{
              </div>
                 {/* {stuff} */}
                 <div className = "right-side">
-                <p>Item Subtotal</p>
+                <p>Item Subtotal  {this.props.value.totalcost}</p>
                 <p>Estimated shipping </p>
 
                 <p>please enter a valid email address before checking out</p>
+                <div id = "error-email"></div>
                 <input id = "btn"/>
                 <button   onClick = {test}>input</button>
                 <button onClick = {buddha}> submit </button>
@@ -96,6 +97,11 @@ class Cart extends Component{
 }
 }
 
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
 function test(){
     // return(
     //     <div>
@@ -105,9 +111,23 @@ function test(){
     //     </div>
 
     // )
+    let test = false
 
-    const b = document.getElementById('btn').value
-    console.log(b)
+    if(test){
+        const b = document.getElementById('btn').value
+    document.getElementById('btn').style.border = "1px solid red"
+    document.getElementById("error-email").innerHTML = "valid email required"
+    document.getElementById("error-email").style.color = "red"
+
+    }else{
+        document.getElementById('btn').style.border = ""
+    document.getElementById("error-email").innerHTML = ""
+    //document.getElementById("error-email").style.color = "black"
+
+    }
+
+    
+    //console.log(b)
 }
 
 function hello(){

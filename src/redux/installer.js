@@ -46,7 +46,8 @@ let initstate = {
     gender : "Male",
     age : 0,
     items : [],
-    totalquantity : 0
+    totalquantity : 0,
+    totalcost : 0
    // addedItems: []
 
 }
@@ -89,6 +90,7 @@ function reducer(state = initstate,action){
            console.log(action.id)
             //let existed_item = state.items.includes( item => action.id.id === item.id)
             let existed_item = false;
+            let addcost = action.id.price
             for(let i = 0; i < state.items.length; i++ ){
                 if(action.id.id === state.items[i].id){
                    // console.log("pogchamp")
@@ -111,7 +113,8 @@ function reducer(state = initstate,action){
                // console.log(existed_item.price)
                 return{
                     ...state,
-                    totalquantity : newQu
+                    totalquantity : newQu,
+                    totalcost : state.totalcost + addcost
                 }
             }
             else{
@@ -119,7 +122,8 @@ function reducer(state = initstate,action){
                 ...state,
                  age : state.age + 1,
                  items : [...state.items, action.id],
-                 totalquantity : state.totalquantity + 1
+                 totalquantity : state.totalquantity + 1,
+                 totalcost : state.totalcost  + addcost
             }
         }
         case "DECREMENT" :
@@ -130,8 +134,10 @@ function reducer(state = initstate,action){
 
         case "ADDQUANTITY" :
            // int num = 0;
+           let adcost = 0
             for(let i  = 0; i < state.items.length; i++){
                 if(action.id.id === state.items[i].id){
+                    adcost = state.items[i].price
                     state.items[i].quantity += 1
                     break;
                 }
@@ -139,17 +145,21 @@ function reducer(state = initstate,action){
             
             return{
                 ...state,
-                totalquantity : state.totalquantity + 1
+                totalquantity : state.totalquantity + 1,
+                totalcost : state.totalcost + adcost
 
 
             }
             //need to work on this logic
         case "SUBQUANTITY" :
+
+            let subcost = 0
             for(let i  = 0; i < state.items.length; i++){
                 if(action.id.id === state.items[i].id){
 
                     if(state.items[i].quantity === 1){
                         let filter_items = []
+                        subcost = state.items[i].price
                         for(let i = 0; i < state.items.length; i++){
                             if(state.items[i].id !== action.id.id){
                                 filter_items.push(state.items[i])
@@ -160,7 +170,8 @@ function reducer(state = initstate,action){
                         return{
                             ...state,
                             items : filter_items,
-                            totalquantity : state.totalquantity - 1
+                            totalquantity : state.totalquantity - 1,
+                            totalcost : state.totalcost - subcost
                         }
 
                     }
@@ -170,16 +181,20 @@ function reducer(state = initstate,action){
             }
             return{
                 ...state,
-                totalquantity : state.totalquantity - 1
+                totalquantity : state.totalquantity - 1,
+                totalcost : state.totalcost - action.id.price
             }
             case "REMOVEITEM" :
                 let filter_items = []
                 let subtractby = 0
+                let subco = 1
                         for(let i = 0; i < state.items.length; i++){
                             if(state.items[i].id !== action.id.id){
                                 filter_items.push(state.items[i])
                             }else{
                                 subtractby = state.items[i].quantity
+                                subco = state.items[i].price * subtractby
+
                             }
 
                         }
@@ -187,7 +202,8 @@ function reducer(state = initstate,action){
                 return{
                     ...state,
                     items : filter_items,
-                    totalquantity : state.totalquantity - subtractby
+                    totalquantity : state.totalquantity - subtractby,
+                    totalcost : state.totalcost - subco
 
                 }
 
