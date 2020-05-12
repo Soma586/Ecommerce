@@ -50,12 +50,21 @@ class Cart extends Component{
             return(
                 <div>
                     <img src = {item.img}/>
+                    <div className = "item-des">
+                    <p>{item.name}</p>
+                    <p> Item: {item.id}</p>
+                    <p> Price: ${item.price}</p>
+                    <button id = "item-btn" onClick = {() => this.handleClickremove(item)}> delete</button>
+                    </div>
+                    
+                    
                     <p>{item.quantity}</p>
                     <div className="add-remove">
                                             <button onClick = {() => this.handleClickadd(item)} ><ArrowDropUp/></button>
                                             <button onClick = {() => this.handleClicksub(item)} ><ArrowDropDown/></button>
                                         </div>
                     <button onClick = {() => this.handleClickremove(item)}> delete</button>
+                    <hr></hr>
 
 
 
@@ -72,6 +81,7 @@ class Cart extends Component{
         <div className = "cart-parent">
              <div className = "left-side">
                  <h3> Shopping Bag</h3>
+                 <hr></hr>
                  {stuff}
 
              </div>
@@ -103,23 +113,20 @@ function validateEmail(email) {
 }
 
 function test(){
-    // return(
-    //     <div>
-    //         <h1>This is a test</h1>
-    //         <p>This was made in react</p>
-
-    //     </div>
-
-    // )
+  
     let test = false
 
-    if(test){
-        const b = document.getElementById('btn').value
+    const b = document.getElementById('btn').value.toString()
+
+    if(!validateEmail(b)){
+       // console.log('success')
+       
     document.getElementById('btn').style.border = "1px solid red"
     document.getElementById("error-email").innerHTML = "valid email required"
     document.getElementById("error-email").style.color = "red"
 
     }else{
+        //console.log('fail')
         document.getElementById('btn').style.border = ""
     document.getElementById("error-email").innerHTML = ""
     //document.getElementById("error-email").style.color = "black"
