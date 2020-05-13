@@ -41,15 +41,19 @@ function NavBar(props){
                    
                    {/* <Button component = {Link} to = "/cart"> */}
                    <Typography variant="h6" className={classes.title}>
-           <Link to = '/home'>TMstore </Link> 
+           <Link to = '/'>TMstore </Link> 
           </Typography>
 
-                    <Link to = '/about'>
+                    {/* <Link to = '/about'>
                         About
-                    </Link>
+                    </Link> */}
 
                     <Link className= {classes.men} to = '/mens'>
                         Mens
+                    </Link>
+
+                    <Link className= {classes.men} to = '/womens'>
+                        Womens
                     </Link>
 
                     <Link className = {classes.cart}to ="/cart">

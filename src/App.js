@@ -18,7 +18,7 @@ function App() {
       <h1> I watch too much twitch</h1>
       <NavBar/>
       <Switch>
-        <Route path = "/home" component = {Home}/>
+        <Route path = "/"  exact component = {Home}/>
       <Route path ="/about"  component ={About}/>
       {/* <Route path ="/shop"  component ={Shop}/> */}
       <Route path ="/cart"  component ={Cart}/>

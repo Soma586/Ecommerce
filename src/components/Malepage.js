@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {increment, decrement} from '../redux/installer'
 //import items from '../items'
-import items from '../items/maleitem'
+import {items} from '../items/maleitem'
 
 
 
