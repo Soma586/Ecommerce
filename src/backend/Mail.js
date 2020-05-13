@@ -39,14 +39,14 @@ const transport = {
     //let data = blam(req.body.items)
     let data = req.body.items
 
-    console.log("the length is!!!!!! " +  data.length)
+    //console.log("the length is!!!!!! " +  data.length)
 
    // console.log(data[0].img)
 
     //console.log(typeof data)
     // console.log(Object.keys(data).length)
     
-    blam = {
+    blame = {
          info : blam(data)
     
       }
@@ -58,14 +58,14 @@ const transport = {
     const mail = {
       from: process.env.EMAIL,
       //from: "tmstoremailer@gmail.com",
-      //to: req.body.email,
-      to: "darkspeedkey@gmail.com",
+      to: req.body.email,
+      //to: "darkspeedkey@gmail.com",
       //subject: req.body.subject,
-      subject: "this email works",
-      text: req.body.text,
+      subject: "change up",
+      //text: req.body.text,
 
       //html : `<p><b>Hello, this is not a drill</b> <img src= ${req.body.items[0].img} width = "50"  height = "40"/> </p>`
-      html : `${blam.info}`
+      html : `${blame.info}`
       //html : `${data}`
       //html : `<p>wtf</p>`
     }

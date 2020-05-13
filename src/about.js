@@ -21,7 +21,7 @@ class About extends Component{
 
      wtf = () =>{
         axios.post("/Mail" , {
-            // email :"Tarik.Mulholland@gmail.com",
+             email :"darkspeedkey@gmail.com",
             // //email : emailh,
             // name :'baba',
             // subjext : "aaa",

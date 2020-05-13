@@ -119,7 +119,7 @@ function test(){
 
     const b = document.getElementById('btn').value.toString()
 
-    if(validateEmail(b)){
+    if(!validateEmail(b)){
        // console.log('success')
        
     document.getElementById('btn').style.border = "1px solid red"
@@ -135,7 +135,7 @@ function test(){
 
     axios.post("/Mail" , {
         //email :"Tarik.Mulholland@gmail.com",
-        //email : emailh,
+        email : b,
         // name :'baba',
         // subjext : "aaa",
         // text : champ[0].price,
