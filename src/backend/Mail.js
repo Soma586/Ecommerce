@@ -29,19 +29,22 @@ const transport = {
   //req.body.email
   sendToMeRouter.post('/', (req,res, next) => {
     //make mailable object
-    console.log(req.body,)
-    console.log(req.body.img)
-    console.log(req.body.ha)
-    console.log(req.body.items)
-    console.log(req.body.items[0].img)
+    console.log("this is the the data i got")
+    console.log(req.body)
+    //console.log(req.body.img)
+    //console.log(req.body.ha)
+    //console.log(req.body.items)
+    //console.log(req.body.items[0].img)
 
     //let data = blam(req.body.items)
     let data = req.body.items
 
-    console.log(data[0].img)
+    console.log("the length is!!!!!! " +  data.length)
 
-    console.log(typeof data)
-    console.log(Object.keys(data).length)
+   // console.log(data[0].img)
+
+    //console.log(typeof data)
+    // console.log(Object.keys(data).length)
     
     blam = {
          info : blam(data)
@@ -54,14 +57,20 @@ const transport = {
     
     const mail = {
       from: process.env.EMAIL,
-      to: req.body.email,
-      subject: req.body.subject,
+      //from: "tmstoremailer@gmail.com",
+      //to: req.body.email,
+      to: "darkspeedkey@gmail.com",
+      //subject: req.body.subject,
+      subject: "this email works",
       text: req.body.text,
 
-      //html : `<p><b>Hello, this is not a drill</b> <img src= ${req.body.items[1].img} width = "50"  height = "40"/> </p>`
+      //html : `<p><b>Hello, this is not a drill</b> <img src= ${req.body.items[0].img} width = "50"  height = "40"/> </p>`
       html : `${blam.info}`
       //html : `${data}`
+      //html : `<p>wtf</p>`
     }
+
+    console.log("email message was created")
     transporter.sendMail(mail, (err,data) => {
         if(err) {
           res.json({

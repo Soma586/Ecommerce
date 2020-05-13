@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {increment, decrement} from './redux/installer'
 //import God from './godtower.jpg'
 import items from './items'
+import axios from 'axios'
 
 
 
@@ -16,6 +17,22 @@ class About extends Component{
 
     handleClick = (id) =>{
         this.props.increment(id)
+    }
+
+     wtf = () =>{
+        axios.post("/Mail" , {
+            // email :"Tarik.Mulholland@gmail.com",
+            // //email : emailh,
+            // name :'baba',
+            // subjext : "aaa",
+            // text : champ[0].price,
+            // img : champ[0].img,
+            // items : champ
+    
+    
+        })
+        // console.log("JSHAHDAksjda")
+
     }
 
     render(){
@@ -41,6 +58,8 @@ class About extends Component{
         return(
             <div>
                 <h1> I watch Hunter x Hunter (about) </h1>
+                <button onClick = {this.wtf}>AHHHHHHH</button>
+
                 {/* <img src = {item.img}/> */}
                 {/* <button onClick = { () => this.handleClick(item)}>app+</button>
             <button onClick = {decrement}>app-</button> */}

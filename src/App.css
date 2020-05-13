@@ -104,12 +104,18 @@
 
 /*????????????????????????????*/
 #item-btn{
-  margin-top: 85px;
+  /* margin-top: 85px; */
 }
 
 .item-des{
    display: inline-block; 
+   margin-left: 20px;
+  /* // height: 120px; */
   
+}
+
+.item-box{
+  /* height : 120px */
 }
 
 
@@ -118,11 +124,26 @@
 .left-side{
   /* margin-left :24px; */
   margin-right : 24px;
-  width: 642px;
+  /* width: 642px; */
+  width : 500px;
   background-color: aqua;
 }
 
 .right-side{
   background-color: rgb(122, 165, 42);
   width: 309px;
+  height: 300px;
+}
+
+#ar{
+  vertical-align: middle;
+}
+
+
+
+.add-remove span{
+  /* width : 10px;
+  height : 5px; */
+  background-color: white;
+
 }

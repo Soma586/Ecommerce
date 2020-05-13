@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect } from 'react-redux'
 import items from './items'
 import axios from 'axios'
-import {ArrowDropUp, ArrowDropDown  } from '@material-ui/icons'
+import {ArrowDropUp, ArrowDropDown, Add  } from '@material-ui/icons'
 import {addquantity, subquantity, removeItem} from './redux/installer'
 
 
@@ -48,22 +48,23 @@ class Cart extends Component{
         champ = this.props.value.items
         let stuff = this.props.value.items.map( item => {
             return(
-                <div>
+                <div className = "item-box">
                     <img src = {item.img}/>
                     <div className = "item-des">
                     <p>{item.name}</p>
                     <p> Item: {item.id}</p>
-                    <p> Price: ${item.price}</p>
+                    <p> Price: ${item.price * item.quantity}</p>
+                    <p> Quantity {item.quantity}</p>
+                    <button  onClick = {() => this.handleClickadd(item)} ><ArrowDropUp/></button>
+                                            {/* <span>{item.quantity}</span> */}
+                                            <button onClick = {() => this.handleClicksub(item)} ><ArrowDropDown/></button>
                     <button id = "item-btn" onClick = {() => this.handleClickremove(item)}> delete</button>
                     </div>
                     
                     
-                    <p>{item.quantity}</p>
-                    <div className="add-remove">
-                                            <button onClick = {() => this.handleClickadd(item)} ><ArrowDropUp/></button>
-                                            <button onClick = {() => this.handleClicksub(item)} ><ArrowDropDown/></button>
-                                        </div>
-                    <button onClick = {() => this.handleClickremove(item)}> delete</button>
+                    {/* <p>{item.quantity}</p> */}
+                  
+                    {/* <button onClick = {() => this.handleClickremove(item)}> delete</button> */}
                     <hr></hr>
 
 
@@ -87,8 +88,8 @@ class Cart extends Component{
              </div>
                 {/* {stuff} */}
                 <div className = "right-side">
-                <p>Item Subtotal  {this.props.value.totalcost}</p>
-                <p>Estimated shipping </p>
+                <p>Item Subtotal:  {this.props.value.totalcost}</p>
+                <p>Estimated shipping: free  </p>
 
                 <p>please enter a valid email address before checking out</p>
                 <div id = "error-email"></div>
@@ -118,7 +119,7 @@ function test(){
 
     const b = document.getElementById('btn').value.toString()
 
-    if(!validateEmail(b)){
+    if(validateEmail(b)){
        // console.log('success')
        
     document.getElementById('btn').style.border = "1px solid red"
@@ -127,9 +128,22 @@ function test(){
 
     }else{
         //console.log('fail')
-        document.getElementById('btn').style.border = ""
+    document.getElementById('btn').style.border = ""
     document.getElementById("error-email").innerHTML = ""
     //document.getElementById("error-email").style.color = "black"
+    //let emailh = document.getElementById('btn').value.toString()
+
+    axios.post("/Mail" , {
+        //email :"Tarik.Mulholland@gmail.com",
+        //email : emailh,
+        // name :'baba',
+        // subjext : "aaa",
+        // text : champ[0].price,
+        // img : champ[0].img,
+         items : champ
+
+
+    })
 
     }
 
@@ -145,7 +159,7 @@ function hello(){
 function buddha(props){
    // let email = "Tarik.Mulholland@gmail.com"
 
-   let emailh = document.getElementById('btn').value.toString()
+   //let emailh = document.getElementById('btn').value.toString()
 
   //emailh = emailh.toString()
     console.log(champ)
@@ -153,13 +167,13 @@ function buddha(props){
     console.log(test)
 
     axios.post("/Mail" , {
-        //email :"Darkspeedkey@gmail.com",
-        email : emailh,
-        name :'baba',
-        subjext : "aaa",
-        text : champ[0].price,
-        img : champ[0].img,
-        items : champ
+        email :"Tarik.Mulholland@gmail.com",
+        //email : emailh,
+        // name :'baba',
+        // subjext : "aaa",
+        // text : champ[0].price,
+        // img : champ[0].img,
+        // items : champ
 
 
     })
