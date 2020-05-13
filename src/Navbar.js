@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import {AppBar, Toolbar, Box, Badge, Button} from '@material-ui/core'
 import {ShoppingCart} from '@material-ui/icons'
 import {connect} from 'react-redux'
+import {makeStyles} from "@material-ui/core/styles"
 
 
 function NavBar(props){
