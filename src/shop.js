@@ -6,7 +6,7 @@ function Shop(){
 
     return(
         <div>
-            shop her bitch 
+            
         </div>
 
 

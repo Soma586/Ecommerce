@@ -62,11 +62,7 @@ class Cart extends Component{
                     </div>
                     
                     
-                    {/* <p>{item.quantity}</p> */}
-                  
-                    {/* <button onClick = {() => this.handleClickremove(item)}> delete</button> */}
                     <hr></hr>
-
 
 
                 </div>
@@ -86,7 +82,7 @@ class Cart extends Component{
                  {stuff}
 
              </div>
-                {/* {stuff} */}
+            
                 <div className = "right-side">
                 <p>Item Subtotal:  {this.props.value.totalcost}</p>
                 <p>Estimated shipping: free  </p>
