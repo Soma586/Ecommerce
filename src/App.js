@@ -15,7 +15,7 @@ function App() {
   return (
     <Router>
     <div className="App">
-      <h1> I watch too much twitch</h1>
+     
       <NavBar/>
       <Switch>
         <Route path = "/"  exact component = {Home}/>

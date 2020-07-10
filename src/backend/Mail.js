@@ -29,45 +29,22 @@ const transport = {
   //req.body.email
   sendToMeRouter.post('/', (req,res, next) => {
     //make mailable object
-    console.log("this is the the data i got")
-    console.log(req.body)
-    //console.log(req.body.img)
-    //console.log(req.body.ha)
-    //console.log(req.body.items)
-    //console.log(req.body.items[0].img)
 
-    //let data = blam(req.body.items)
     let data = req.body.items
 
-    //console.log("the length is!!!!!! " +  data.length)
-
-   // console.log(data[0].img)
-
-    //console.log(typeof data)
-    // console.log(Object.keys(data).length)
-    
     blame = {
-         info : blam(data)
+         info : blam(data, req.body.total)
     
       }
     
 
 
-
-    
     const mail = {
       from: process.env.EMAIL,
-      //from: "tmstoremailer@gmail.com",
       to: req.body.email,
-      //to: "darkspeedkey@gmail.com",
-      //subject: req.body.subject,
-      subject: "change up",
-      //text: req.body.text,
-
-      //html : `<p><b>Hello, this is not a drill</b> <img src= ${req.body.items[0].img} width = "50"  height = "40"/> </p>`
-      html : `${blame.info}`
-      //html : `${data}`
-      //html : `<p>wtf</p>`
+      subject: "Confimation order from TM store",
+      html : `<table> ${blame.info} </table>`
+    
     }
 
     console.log("email message was created")
@@ -86,33 +63,22 @@ const transport = {
       });
 
 
-  function blam(data){
+  function blam(data, total){
     
     let count = Object.keys(data).length
     //let x  = document.write("<h1>Hello World!</h1><p>Have a nice day!</p>")
     let xx = ""
-    //console.log(typeof true)
-    console.log("the count is: " + count)
-    console.log("in the blam")
-    console.log(typeof data)
+  
 
     for(let i = 0 ; i < count; i++){
-      //xx.concat("<h1>Hello World!</h1><p>Have a nice day!</p>")
-      
-      console.log(data[i].img)
-      xx += `<h1>Hello World! <img src =${data[i].img} /> </h1> <p>quantity is ${data[i].quantity} </p> <hr>`
+    
+      xx += `<tr> <img src =${data[i].img} width = "215"  height = "215" /> <p display : inline-block >quantity is ${data[i].quantity} </p> <hr> </tr>`
     }
 
-    //let xx =
-    //console.log("wtf") 
-    console.log(xx);
+    xx += `<tr>Item subtotal $${total}</tr>`
     return xx;
   }
 
-  // blam = {
-  //   info : blam()
-
-  // }
 
 
 

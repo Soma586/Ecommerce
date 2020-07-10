@@ -1,5 +1,5 @@
-import God from './godtower.jpg'
-import Tower from './Tower.png'
+//import God from './godtower.jpg'
+//import Tower from './Tower.png'
 
 
 // const item = {

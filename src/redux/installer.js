@@ -81,9 +81,7 @@ function reducer(state = initstate,action){
 
            // let addedItem = state.items.find(item=> item.id === action.id)
             console.log("added to cart")
-            //console.log(action.id)
-           // console.log(action.id.id)
-           // console.log(action.id.img)
+           
            //you need to change the id object sit it's less confusing
            console.log("print items")
            console.log(state.items)

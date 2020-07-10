@@ -21,7 +21,7 @@ class Malepage extends Component{
                     <div className = "boxy">
                     <img src = {item.img}/>
                     <h3>{item.name}</h3>
-                        <p>{item.price}</p>
+                        <p>${item.price}</p>
                         <button onClick = { () => this.handleClick(item)}>Add to Cart</button>
                         {/* <button onClick = {decrement}>app-</button> */}
 
@@ -37,10 +37,7 @@ class Malepage extends Component{
 
         return(
             <div className = "item-container">
-                {/* <h1> I watch Hunter x Hunter (about) </h1> */}
-                {/* <img src = {item.img}/> */}
-                {/* <button onClick = { () => this.handleClick(item)}>app+</button>
-            <button onClick = {decrement}>app-</button> */}
+                
             {stuff}
             </div>
     

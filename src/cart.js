@@ -7,6 +7,7 @@ import {addquantity, subquantity, removeItem} from './redux/installer'
 
 
 let champ = []
+let total = 0;
 class Cart extends Component{
 
     handleClickadd = (id) =>{
@@ -32,10 +33,11 @@ class Cart extends Component{
 
     if(this.props.value.items.length === 0){
         return(
-            <div>
-                <p> the cart is currenly empty</p>
-                <button onClick = {buddha}> submit </button>
-                <button onClick = {hello}>say hi</button>
+            <div style={{display : "flex", justifyContent : "center", alignItems : "center"}}>
+                {/* <p style={{display : "flex", justifyContent : "center", alignItems : "center"}}> the cart is currently empty</p> */}
+                {/* <button onClick = {buddha}> submit </button>
+                <button onClick = {hello}>say hi</button> */}
+                <img src = {require("./images/empty_cart.png")} />
                 
 
 
@@ -46,6 +48,7 @@ class Cart extends Component{
     }else{
 
         champ = this.props.value.items
+        total = this.props.value.totalcost
         let stuff = this.props.value.items.map( item => {
             return(
                 <div className = "item-box">
@@ -84,14 +87,14 @@ class Cart extends Component{
              </div>
             
                 <div className = "right-side">
-                <p>Item Subtotal:  {this.props.value.totalcost}</p>
+                <p>Item Subtotal:  ${this.props.value.totalcost}</p>
                 <p>Estimated shipping: free  </p>
 
                 <p>please enter a valid email address before checking out</p>
                 <div id = "error-email"></div>
                 <input id = "btn"/>
-                <button   onClick = {test}>input</button>
-                <button onClick = {buddha}> submit </button>
+                <button   onClick = {test}> checkout</button>
+                {/* <button onClick = {buddha}> submit </button> */}
                 </div>
 
                 
@@ -126,17 +129,13 @@ function test(){
         //console.log('fail')
     document.getElementById('btn').style.border = ""
     document.getElementById("error-email").innerHTML = ""
-    //document.getElementById("error-email").style.color = "black"
-    //let emailh = document.getElementById('btn').value.toString()
+   
 
     axios.post("/Mail" , {
-        //email :"Tarik.Mulholland@gmail.com",
+        
         email : b,
-        // name :'baba',
-        // subjext : "aaa",
-        // text : champ[0].price,
-        // img : champ[0].img,
-         items : champ
+         items : champ,
+         total : total
 
 
     })
@@ -152,31 +151,6 @@ function hello(){
 }
 
 
-function buddha(props){
-   // let email = "Tarik.Mulholland@gmail.com"
-
-   //let emailh = document.getElementById('btn').value.toString()
-
-  //emailh = emailh.toString()
-    console.log(champ)
-    console.log(champ[0].price)
-    console.log(test)
-
-    axios.post("/Mail" , {
-        email :"Tarik.Mulholland@gmail.com",
-        //email : emailh,
-        // name :'baba',
-        // subjext : "aaa",
-        // text : champ[0].price,
-        // img : champ[0].img,
-        // items : champ
-
-
-    })
-    console.log("called buddha")
-
-
-}
 
 
 function maptoprops(globalstate){
@@ -185,12 +159,6 @@ function maptoprops(globalstate){
 
     }
 }
-
-// const myActions = {
-//     add : addquantity
-
-
-// }
 
 
 const mapDispatchToProps = (dispatch)=>{
